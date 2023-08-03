@@ -33,38 +33,33 @@ $ go run main.go
 
 ## Getting Started
 
-To achieve our goal we need 2 endpoints. First, /nonce/:address to generate a nonce for our wallet address, second, /signin to either sign-in or sign-up our user.
+To achieve our goal we need 2 endpoints. First, `/nonce/:address` to generate a nonce for our wallet address, second, `/signin` to either sign-in or sign-up our user.
 
-## Usage
+## Snippet Example
 
-A few examples of useful commands and/or tasks.
+````
+func Nonce(c *gin.Context) {
+    // in my App I just have my db and redis
+	app := c.MustGet("app").(*config.App)
+	address := c.Param("address")
 
-```
-$ First example
-$ Second example
-$ And keep this in mind
-```
+    // we check if it's a valid EVM like address
+	if !evm.IsValidAddress(address) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid address format"})
+		return
+	}
 
-## Deployment
+    // we generate a nonce with SIWE
+	nonce := siwe.GenerateNonce()
 
-Additional notes on how to deploy this on a live or release system. Explaining the most important branches, what pipelines they trigger and how to update the database (if anything special).
+    // save the address annd nonce in redis
+	err := app.Rdb.Set(ctx, address, nonce, 1*time.Minute).Err()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-### Server
-
-* Live:
-* Release:
-* Development:
-
-### Branches
-
-* Master:
-* Feature:
-* Bugfix:
-* etc...
-
-## Additional Documentation and Acknowledgments
-
-* Project folder on server:
-* Confluence link:
-* Asana board:
-* etc...
+	c.JSON(http.StatusOK, gin.H{
+		"nonce": nonce,
+	})
+}
+````
