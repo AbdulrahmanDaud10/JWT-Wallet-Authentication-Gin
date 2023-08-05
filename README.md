@@ -63,3 +63,12 @@ func Nonce(c *gin.Context) {
 	})
 }
 ````
+
+## Enviroment Variable Example
+````
+REDIS_ADDR 		= "localhost:6379"
+REDIS_PASSWORD 	= "xxxx"
+DB_DSN  		=   "host=localhost user=admin password=supersecret dbname=db port=5432 sslmode=disable"
+RPC_URL 		=   "https://eth-mainnet.g.alchemy.com/v2/apikey"
+JWT_SECRET  	= "jflksdklfklsdjflsdjlfkjsdlkfjsdlkfjlsdkjfldksj999999"
+````
