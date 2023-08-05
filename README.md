@@ -68,7 +68,7 @@ func Nonce(c *gin.Context) {
 ````
 REDIS_ADDR 		= "localhost:6379"
 REDIS_PASSWORD 	= "xxxx"
-DB_DSN  		=   "host=localhost user=admin password=supersecret dbname=db port=5432 sslmode=disable"
-RPC_URL 		=   "https://eth-mainnet.g.alchemy.com/v2/apikey"
-JWT_SECRET  	= "jflksdklfklsdjflsdjlfkjsdlkfjsdlkfjlsdkjfldksj999999"
+DB_DSN  		=  "host=localhost user=abdulrahman password=bundaar dbname=db port=5432 sslmode=disable"
+RPC_URL 		=  ""
+JWT_SECRET  	= " "
 ````
