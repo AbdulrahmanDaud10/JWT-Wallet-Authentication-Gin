@@ -63,3 +63,12 @@ func Nonce(c *gin.Context) {
 	})
 }
 ````
+
+## Enviroment Variable Example
+````
+REDIS_ADDR 		= "localhost:6379"
+REDIS_PASSWORD 	= "xxxx"
+DB_DSN  		=  "host=localhost user=abdulrahman password=bundaar dbname=db port=5432 sslmode=disable"
+RPC_URL 		=  ""
+JWT_SECRET  	= " "
+````

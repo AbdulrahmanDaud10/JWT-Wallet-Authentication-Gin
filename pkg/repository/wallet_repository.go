@@ -3,6 +3,7 @@ package api
 import (
 	"net/http"
 
+	"github.com/AbdulrahmanDaud10/jwtethereumwalletauthentication"
 	"github.com/gin-gonic/gin"
 )
 
